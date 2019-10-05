@@ -3,18 +3,10 @@ const express = require('express')
 const swaggerUi = require('swagger-ui-express')
 const yaml = require('js-yaml')
 const fs = require('fs')
-const winston = require('winston')
+const logger = require('./src/util/logger')
 
 const app = express()
 const swaggerDoc = yaml.safeLoad(fs.readFileSync('./swagger.yml', 'utf8'))
-
-const logger = winston.createLogger({
-  level: process.env.LOG_LEVEL || 'info',
-  format: winston.format.simple(),
-  transports: [
-    new winston.transports.Console()
-  ]
-})
 
 const tags = []
 const latest = {}
