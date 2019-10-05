@@ -20,7 +20,7 @@ ruuvi.on('found', tag => {
 
 app.get('/tag', (req, res) => res.json(tags))
 
-app.get('/tag/:id', (req, res) => {
+app.get('/entry/:id/latest', (req, res) => {
   const { id } = req.params
 
   if (!latest[id]) {

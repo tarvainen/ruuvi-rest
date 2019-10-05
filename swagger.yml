@@ -5,7 +5,8 @@ info:
   title: "RUUVI-REST"
 tags:
 - name: "tag"
-  description: "Data from your RuuviTag sensors"
+  description: "Your RuuviTag sensors"
+- name: "entry"
 schemes:
 - "https"
 - "http"
@@ -25,25 +26,25 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/Tag"
-  /tag/{tagId}:
+  /entry/{tagId}/latest:
     get:
       tags:
-      - "tag"
-      summary: "Get tag latest data by tag ID"
-      operationId: "getTagById"
+      - "entry"
+      summary: "Get tag latest tag entry by tag ID"
+      operationId: "getLatestEntryByTagId"
       parameters:
       - name: "tagId"
         in: "path"
-        description: "Tag id to search data for"
+        description: "Tag id to search entry for"
         required: true
         type: "string"
       responses:
         200:
-          description: "Data from the RuuviTag sensor"
+          description: "Latest entry from the RuuviTag sensor"
           schema:
             $ref: "#/definitions/Entry"
         404:
-          description: "No data found for tag"
+          description: "No entry found for tag"
 definitions:
   Tag:
     type: "object"
