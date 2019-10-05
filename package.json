@@ -1,0 +1,18 @@
+{
+  "name": "@tarvainen/ruuvi-rest",
+  "version": "0.0.1",
+  "description": "Provide RuuviTag information as easily accessible REST API",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Atte Tarvainen <tarvainen.atte@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "4.17.1",
+    "node-ruuvitag": "4.1.0"
+  },
+  "devDependencies": {
+    "standard": "^14.3.1"
+  }
+}
