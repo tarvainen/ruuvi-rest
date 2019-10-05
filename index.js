@@ -3,17 +3,28 @@ const express = require('express')
 const swaggerUi = require('swagger-ui-express')
 const yaml = require('js-yaml')
 const fs = require('fs')
+const winston = require('winston')
 
 const app = express()
 const swaggerDoc = yaml.safeLoad(fs.readFileSync('./swagger.yml', 'utf8'))
+
+const logger = winston.createLogger({
+  level: process.env.LOG_LEVEL || 'info',
+  format: winston.format.simple(),
+  transports: [
+    new winston.transports.Console()
+  ]
+})
 
 const tags = []
 const latest = {}
 
 ruuvi.on('found', tag => {
+  logger.debug(`Found tag ${tag.id}`)
   tags.push(tag)
 
   tag.on('updated', data => {
+    logger.debug(`Received data from tag ${tag.id}`, data)
     latest[tag.id] = { ...data, timestamp: Date.now() }
   })
 })
@@ -36,6 +47,6 @@ const base = `http://localhost:${port}`
 
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDoc))
 
-console.log(`Swagger API documentation available at ${base}/doc`)
+logger.info(`Swagger API documentation available at ${base}/doc`)
 
-app.listen(port, err => err ? console.error(err) : console.log(`App listening on ${base}`))
+app.listen(port, err => err ? logger.error(err) : logger.info(`App listening on ${base}`))
