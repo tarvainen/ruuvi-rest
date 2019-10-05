@@ -1,0 +1,89 @@
+swagger: "2.0"
+info:
+  description: "Provide data from RuuviTag sensors as a easily consumable REST API"
+  version: "0.0.1"
+  title: "RUUVI-REST"
+tags:
+- name: "tag"
+  description: "Data from your RuuviTag sensors"
+schemes:
+- "https"
+- "http"
+paths:
+  /tag:
+    get:
+      tags:
+      - "tag"
+      summary: "Get all tags"
+      operationId: "getTags"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "List of tags"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Tag"
+  /tag/{tagId}:
+    get:
+      tags:
+      - "tag"
+      summary: "Get tag latest data by tag ID"
+      operationId: "getTagById"
+      parameters:
+      - name: "tagId"
+        in: "path"
+        description: "Tag id to search data for"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "Data from the RuuviTag sensor"
+          schema:
+            $ref: "#/definitions/Entry"
+        404:
+          description: "No data found for tag"
+definitions:
+  Tag:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+        example: d151ff0290804d86b80f20e9ae9a823e
+  Entry:
+    type: "object"
+    properties:
+      timestamp:
+        type: "integer"
+        example: 1570268968310
+      dataFormat:
+        type: "integer"
+        example: 3
+      rssi:
+        type: "integer"
+        example: -92
+      humidity:
+        type: "number"
+        example: 51.5
+      temperature:
+        type: "number"
+        example: 16.17
+      pressure:
+        type: "integer"
+        example: 99784
+      accelerationX:
+        type: "integer"
+        example: -22
+      accelerationY:
+        type: "integer"
+        example: -29
+      accelerationZ:
+        type: "integer"
+        example: 1051
+      battery:
+        type: "integer"
+        example: 3049
+externalDocs:
+  description: "More about RuuviTag"
+  url: "https://ruuvi.com/"
