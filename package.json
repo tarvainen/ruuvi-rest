@@ -10,7 +10,9 @@
   "license": "MIT",
   "dependencies": {
     "express": "4.17.1",
-    "node-ruuvitag": "4.1.0"
+    "js-yaml": "3.13.1",
+    "node-ruuvitag": "4.1.0",
+    "swagger-ui-express": "4.1.1"
   },
   "devDependencies": {
     "standard": "^14.3.1"
