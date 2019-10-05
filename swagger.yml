@@ -30,7 +30,7 @@ paths:
     get:
       tags:
       - "entry"
-      summary: "Get tag latest tag entry by tag ID"
+      summary: "Get latest entry by tag ID"
       operationId: "getLatestEntryByTagId"
       parameters:
       - name: "tagId"
