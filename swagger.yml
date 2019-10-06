@@ -43,8 +43,18 @@ paths:
           description: "Latest entry from the RuuviTag sensor"
           schema:
             $ref: "#/definitions/Entry"
-        404:
-          description: "No entry found for tag"
+  /entry/stream:
+    produces: ["text/event-stream"]
+    get:
+      tags:
+        - "entry"
+      summary: Get entries as SSE
+      operation: getEntriesStream
+      responses:
+        200:
+          description: "Entry stream"
+          schema:
+            $ref: "#/definitions/Entry"
 definitions:
   Tag:
     type: "object"
