@@ -15,9 +15,11 @@ ruuvi.on('found', tag => {
 
   tag.on('updated', data => {
     logger.debug(`Received data from tag ${tag.id}`, data)
-    entryStream.send({ tagId: tag.id, ...data })
 
-    updateEntryByTagId({ ...data, timestamp: Date.now() }, tag.id)
+    const entry = { ...data, timestamp: Date.now() }
+
+    updateEntryByTagId(entry, tag.id)
+    entryStream.send({ tagId: tag.id, ...entry })
   })
 })
 
