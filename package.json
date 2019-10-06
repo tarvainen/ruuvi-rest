@@ -4,7 +4,8 @@
   "description": "Provide RuuviTag information as easily accessible REST API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "lint": "standard"
   },
   "author": "Atte Tarvainen <tarvainen.atte@gmail.com>",
   "license": "MIT",
