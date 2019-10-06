@@ -17,6 +17,12 @@ npm install
 npm start
 ```
 
+### Running on linux without root / sudo
+
+```
+sudo setcap cap_net_raw+eip $(eval readlink -f `which node`)
+```
+
 ## API Documentation
 
 Once app started, the Swagger API documentation is available at http://localhost:3000/doc (or https://whereveryourappisrunning.com/doc).
