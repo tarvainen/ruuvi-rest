@@ -1,5 +1,9 @@
 # RUUVI-REST
 
+[![Actions Status](https://github.com/tarvainen/ruuvi-rest/workflows/CI/badge.svg)](https://github.com/tarvainen/ruuvi-rest/actions)
+[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 Provide [RuuviTag](https://ruuvi.com/) data in easily consumable REST API.
 
 ## Installation
