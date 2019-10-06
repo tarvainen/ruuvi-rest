@@ -5,6 +5,7 @@ const tagRouter = require('./src/router/tagRouter')
 const entryRouter = require('./src/router/entryRouter')
 const docRouter = require('./src/router/docRouter')
 const { addTag, updateEntryByTagId } = require('./src/util/store')
+const { entryStream } = require('./src/util/stream')
 
 const app = express()
 
@@ -14,6 +15,8 @@ ruuvi.on('found', tag => {
 
   tag.on('updated', data => {
     logger.debug(`Received data from tag ${tag.id}`, data)
+    entryStream.send({ tagId: tag.id, ...data })
+
     updateEntryByTagId({ ...data, timestamp: Date.now() }, tag.id)
   })
 })

@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const { getLastEntryByTagId } = require('../util/store')
+const { entryStream } = require('../util/stream')
 
 router.get('/:id/latest', (req, res) => {
   const { id } = req.params
@@ -13,5 +14,7 @@ router.get('/:id/latest', (req, res) => {
 
   return res.json(entry)
 })
+
+router.get('/stream', entryStream.init)
 
 module.exports = router
