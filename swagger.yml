@@ -8,7 +8,6 @@ tags:
   description: "Your RuuviTag sensors"
 - name: "entry"
 schemes:
-- "https"
 - "http"
 paths:
   /tag:
